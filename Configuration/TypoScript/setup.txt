@@ -1,0 +1,11 @@
+# Module configuration
+module.tx_mdrmanager {
+	persistence {
+		storagePid = {$module.tx_mdrmanager.persistence.storagePid}
+	}
+	view {
+		templateRootPath = {$module.tx_mdrmanager.view.templateRootPath}
+		partialRootPath = {$module.tx_mdrmanager.view.partialRootPath}
+		layoutRootPath = {$module.tx_mdrmanager.view.layoutRootPath}
+	}
+}
