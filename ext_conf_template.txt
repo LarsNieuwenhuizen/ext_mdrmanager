@@ -1,0 +1,4 @@
+# cat=basic; type=string; label=MijnDomeinReseller username
+username =
+# cat=basic; type=password; label=MijnDomeinReseller password
+password =

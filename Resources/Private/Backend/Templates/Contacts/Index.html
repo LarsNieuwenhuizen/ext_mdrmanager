@@ -1,0 +1,20 @@
+<f:layout name="Contacts" />
+<f:section name="content">
+	<div id="contacts">
+		<f:if condition="{errors}">
+			<div class="errors">
+				<f:for each="{errors}" as="error">
+					<span class="error"> {error.errortxt}: {error.errorno}</span>
+				</f:for>
+			</div>
+		</f:if>
+
+		<div class="list">
+			<div class="contact">
+				<f:for each="{contacts}" as="contact">
+					<span> <f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:lastname" />: {contact.achternaam}</span>
+				</f:for>
+			</div>
+		</div>
+	</div>
+</f:section>

@@ -1,0 +1,22 @@
+.step {
+	margin-top: 4px;
+	margin-right: 10px;
+	float: left;
+}
+
+.step.act {
+	font-weight: bold;
+}
+
+.errors {
+	color: #ff0000;
+	font-weight: bold;
+}
+
+#contacts {
+	padding: 10px;
+}
+
+.list .contact span{
+	display: block;
+}
