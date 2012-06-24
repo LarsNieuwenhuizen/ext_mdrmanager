@@ -1,10 +1,12 @@
 <?php
 
+// URL Interface
 class Tx_Mdrmanager_3rdParty_mdrApi {
+
 	// When filled in, the auth,user and pass values are automatically supplied in each request
-	var $authtype = "md5";    // Tells server if password is sent in 'plain' or 'md5', when useSSL = false only 'md5' is allowed
-	var $user     = '';
-	var $pass     =  '';
+	var $authtype = "";    // Tells server if password is sent in 'plain' or 'md5', when useSSL = false only 'md5' is allowed
+	var $user     = "";
+	var $pass     = "";
 
 	var $host   = "manager.mijndomeinreseller.nl";
 	var $url    = "/api/?";
@@ -136,5 +138,4 @@ class Tx_Mdrmanager_3rdParty_mdrApi {
 		return $this->PostString;
 	}
 }
-
 ?>
