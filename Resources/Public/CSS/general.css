@@ -1,3 +1,7 @@
+* {
+	text-align: left !important;
+}
+
 .step {
 	margin-top: 4px;
 	margin-right: 10px;
@@ -11,12 +15,93 @@
 .errors {
 	color: #ff0000;
 	font-weight: bold;
+	padding: 10px;
+}
+
+.errors ul li {
+	list-style: circle !important;
 }
 
 #contacts {
 	padding: 10px;
 }
 
-.list .contact span{
+.list {
+	border: double;
+	width: 50%;
+}
+
+.list h1 {
+	padding: 5px;
+}
+
+.list .contact span.item {
 	display: block;
+	width: auto;
+	font-size: 12px;
+	line-height: 16px;
+	padding: 5px;
+}
+
+.list .contact span.item:hover {
+	cursor: pointer;
+}
+
+.list .contact span.item .more-data{
+	display: none;
+}
+
+.list .contact span.item.odd{
+	background-color: #d3d3d3;
+}
+
+.list .contact span.see-more{
+	display: inline;
+	float: right;
+	color: #999;
+}
+
+.typo3-dblist {
+	width: 40% !important;
+	margin: 10px 0px 0px 10px !important;
+}
+
+.more-data {
+	display: none;
+}
+
+.exp-coll {
+	width: 15px;
+	height: 15px;
+	display: block;
+	background-image: url('../Icons/exp-coll.gif') !important;
+	background-position: top;
+}
+
+.exp-coll:hover {
+	cursor: pointer;
+}
+
+.exp-coll.expanded {
+	background-position: bottom;
+}
+
+.typo3-TCEforms.contacts {
+	width: 40% !important;
+	border-bottom: 1px solid #999 !important;
+	margin: 10px 0px 0px 10px;
+}
+
+.typo3-TCEforms.contacts input[type="text"],
+.typo3-TCEforms.contacts select{
+	width: 300px;
+	border: 1px solid #999;
+	padding: 2px;
+}
+
+table.new-contact td {
+	padding: 5px 10px 3px 10px;
+}
+
+table.typo3-TCEforms div.typo3-dyntabmenu-divs {
 }

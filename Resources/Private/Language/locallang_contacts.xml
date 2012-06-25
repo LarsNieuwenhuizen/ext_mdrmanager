@@ -11,8 +11,25 @@
 			<label index="mlang_labels_tablabel">Contacts</label>
 			<label index="step1">Step 1</label>
 			<label index="step2">Step 2</label>
-			<label index="index_step">Contacts index</label>
+			<label index="index_step">Contacts overview</label>
 			<label index="lastname">Last name</label>
+			<label index="list">List</label>
+			<label index="see-more">see-more</label>
+			<label index="add_new_contact">Add a new contact</label>
+			<label index="firstname">Firstname</label>
+			<label index="lastname">Lastname</label>
+			<label index="insertion">Insertion</label>
+			<label index="company_name">Company name</label>
+			<label index="company_legal">Legal</label>
+			<label index="street">Street</label>
+			<label index="no">Number</label>
+			<label index="no-addition">Number addition</label>
+			<label index="zipcode">Zipcode</label>
+			<label index="city">City</label>
+			<label index="country">Country</label>
+			<label index="email">Email</label>
+			<label index="tel">Telephone</label>
+			<label index="submit">Submit</label>
 		</languageKey>
 	</data>
 </T3locallang>
