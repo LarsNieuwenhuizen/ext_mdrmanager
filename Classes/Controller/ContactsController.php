@@ -309,6 +309,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 	 * @return void
 	 */
 	public function indexAction() {
+		$this->view->assign('step', 'contact_list');
 		$mdr = t3lib_div::makeInstance('Tx_Mdrmanager_3rdParty_mdrApi');
 		$mdr->AddParam('command', 'contact_list');
 		$mdr->doTransaction();
@@ -317,19 +318,19 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 
 		$contacts = array();
 		for($i=0; $i<$mdr->Values["contactcount"]; $i++){
-			$contacts[$i]['id'] = $mdr->Values[ "contact_id[$i]" ];
-			$contacts[$i]['bedrijfsnaam'] = $mdr->Values[ "contact_bedrijfsnaam[$i]" ];
-			$contacts[$i]['voorletter'] = $mdr->Values[ "contact_voorletter[$i]" ];
-			$contacts[$i]['tussenvoegsel'] = $mdr->Values[ "contact_tussenvoegsel[$i]" ];
-			$contacts[$i]['achternaam'] = $mdr->Values[ "contact_achternaam[$i]" ];
-			$contacts[$i]['straat'] = $mdr->Values[ "contact_straat[$i]" ];
-			$contacts[$i]['huisnr'] = $mdr->Values[ "contact_huisnr[$i]" ];
-			$contacts[$i]['huisnrtoev'] = $mdr->Values[ "contact_huisnrtoev[$i]" ];
-			$contacts[$i]['postcode'] = $mdr->Values[ "contact_postcode[$i]" ];
-			$contacts[$i]['plaats'] = $mdr->Values[ "contact_plaats[$i]" ];
-			$contacts[$i]['land'] = $mdr->Values[ "contact_land[$i]" ];
-			$contacts[$i]['email'] = $mdr->Values[ "contact_email[$i]" ];
-			$contacts[$i]['tel'] = $mdr->Values[ "contact_tel[$i]" ];
+			$contacts[$i]['id'] = $mdr->Values["contact_id[$i]"];
+			$contacts[$i]['bedrijfsnaam'] = $mdr->Values["contact_bedrijfsnaam[$i]"];
+			$contacts[$i]['voorletter'] = $mdr->Values["contact_voorletter[$i]"];
+			$contacts[$i]['tussenvoegsel'] = $mdr->Values["contact_tussenvoegsel[$i]"];
+			$contacts[$i]['achternaam'] = $mdr->Values["contact_achternaam[$i]"];
+			$contacts[$i]['straat'] = $mdr->Values["contact_straat[$i]"];
+			$contacts[$i]['huisnr'] = $mdr->Values["contact_huisnr[$i]"];
+			$contacts[$i]['huisnrtoev'] = $mdr->Values["contact_huisnrtoev[$i]"];
+			$contacts[$i]['postcode'] = $mdr->Values["contact_postcode[$i]"];
+			$contacts[$i]['plaats'] = $mdr->Values["contact_plaats[$i]"];
+			$contacts[$i]['land'] = $mdr->Values["contact_land[$i]"];
+			$contacts[$i]['email'] = $mdr->Values["contact_email[$i]"];
+			$contacts[$i]['tel'] = $mdr->Values["contact_tel[$i]"];
 		}
 		$this->view->assign('contacts', $contacts);
 
@@ -345,19 +346,40 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 	 */
 	protected function _checkForErrors(Tx_Mdrmanager_3rdParty_mdrApi $mdr) {
 		if($mdr->Values['errcount'] > 0) {
-			$errors = array();
 			for($i = 1; $i <= $mdr->Values['errcount']; $i++) {
-				$errors[$i]['errortxt'] = $mdr->Values[ "errnotxt".$i ];
-				$errors[$i]['errorno'] = $mdr->Values[ "errno".$i ];
+				$this->flashMessageContainer->add($mdr->Values[ "errnotxt".$i ] . ' code: ' . $mdr->Values[ "errno".$i ]);
 			}
-			$this->view->assign('errors', $errors);
 		}
 	}
 
 	/**
-	 * Add a new contact
+	 * Show a form to add a new contact
+	 */
+	public function newContactFormAction() {
+		$this->view->assign('step', 'add_contact');
+		$this->view->assign('countries', $this->countries);
+	}
+
+	/**
+	 * Add the contact
+	 *
+	 * @return void
 	 */
 	public function addAction() {
+		$mdr = t3lib_div::makeInstance('Tx_Mdrmanager_3rdParty_mdrApi');
+		$mdr->addParam('command', 'contact_add');
+		foreach($this->request->getArguments() as $k => $v) {
+			$mdr->addParam($k, $v);
+		}
+		$mdr->DoTransaction();
+		$errors = $this->_checkForErrors($mdr);
+		if(empty($errors)) {
+			$this->flashMessageContainer->add('contact toegevoegd');
+			$this->redirect('index');
+		} else {
+			$this->flashMessageContainer->add($errors);
+			$this->redirect('newContactForm');
+		}
 	}
 }
 

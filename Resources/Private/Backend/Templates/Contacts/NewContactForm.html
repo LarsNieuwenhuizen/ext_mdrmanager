@@ -1,0 +1,164 @@
+<f:layout name="Contacts" />
+<f:section name="content">
+	<f:flashmessages class="errors" />
+	<div class="typo3-inner-docbody">
+		<table class="typo3-TCEforms contacts" celpadding="0" cellspacing="0" border="0" width="662">
+			<tr>
+				<td>
+					<div class="typo3-dyntabmenu-tabs">
+						<table class="typo3-dyntabmenu" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td class="tabact">
+									<a href="#" onclick="return false;">
+										<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:add_new_contact" />
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="typo3-dyntabmenu-divs">
+						<f:form method="post" action="add" name="newContact">
+							<table cellpadding="0" cellspacing="0" class="new-contact">
+								<tr>
+									<td width="120">
+										<label for="voorletter">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:firstname" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="voorletter" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="tussenvoegsel">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:insertion" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="tussenvoegsel" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="achternaam">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:lastname" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="achternaam" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="bedrijfsnaam">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:company_name" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="bedrijfsnaam" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="rechtsvorm">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:company_legal" />
+										</label>
+									</td>
+									<td>
+										<f:form.select name="rechtsvorm" options="{legalForms}" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="straat">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:street" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="straat" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="huisnr">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:no" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="huisnr" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="huisnrtoev">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:no-addition" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="huisnrtoev" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="postcode">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:zipcode" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="postcode" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="plaats">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:city" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="plaats" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="land">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:country" />
+										</label>
+									</td>
+									<td>
+										<f:form.select name="land" options="{countries}" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="email">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:email" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="email" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="tel">
+											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:tel" />
+										</label>
+									</td>
+									<td>
+										<f:form.textfield name="tel" value="" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<f:form.submit name="submit" value="{f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:submit')}" />
+									</td>
+								</tr>
+							</table>
+						</f:form>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</f:section>

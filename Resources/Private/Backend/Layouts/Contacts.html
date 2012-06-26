@@ -10,9 +10,12 @@
 			</div>
 			<div id="typo3-docheader-row2">
 				<div class="docheader-row2-left">
-					<div class="step act"><f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:index_step" /></div>
+					<div class="step act"><f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:{step}" /></div>
 				</div>
 				<div class="docheader-row2-right">
+					<f:link.action action="index">{f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:contact_list')}</f:link.action>
+					|
+					<f:link.action action="newContactForm">{f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:add_contact')}</f:link.action>
 				</div>
 			</div>
 		</div>

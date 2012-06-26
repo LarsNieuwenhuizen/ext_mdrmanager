@@ -35,7 +35,7 @@ if (TYPO3_MODE === 'BE') {
 		'contacts',	// Submodule key
 		'',						// Position
 		array(
-			'Contacts' => 'index, list, show, add, delete',
+			'Contacts' => 'index, list, show, add, delete, newContactForm',
 		),
 		array(
 			'access' => 'user,group',
