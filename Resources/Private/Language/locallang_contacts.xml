@@ -31,6 +31,8 @@
 			<label index="email">Email</label>
 			<label index="tel">Telephone</label>
 			<label index="submit">Submit</label>
+			<label index="required_if_company">Required if company is filled in</label>
+			<label index="required">Required</label>
 		</languageKey>
 	</data>
 </T3locallang>

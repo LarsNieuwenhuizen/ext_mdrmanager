@@ -361,6 +361,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 	public function newContactFormAction() {
 		$this->view->assign('step', 'add_contact');
 		$this->view->assign('countries', $this->countries);
+		$this->view->assign('postData', $this->request->getArguments());
 	}
 
 	/**
@@ -380,7 +381,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 			$this->flashMessageContainer->add('contact toegevoegd');
 			$this->redirect('index');
 		} else {
-			$this->redirect('newContactForm');
+			$this->forward('newContactForm');
 		}
 	}
 }

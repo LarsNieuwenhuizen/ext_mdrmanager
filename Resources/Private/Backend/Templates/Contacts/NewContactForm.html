@@ -23,10 +23,11 @@
 									<td width="120">
 										<label for="voorletter">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:firstname" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="voorletter" value="" />
+										<f:form.textfield name="voorletter" value="{postData.voorletter}" />
 									</td>
 								</tr>
 								<tr>
@@ -36,17 +37,18 @@
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="tussenvoegsel" value="" />
+										<f:form.textfield name="tussenvoegsel" value="{postData.tussenvoegsel}" />
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label for="achternaam">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:lastname" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="achternaam" value="" />
+										<f:form.textfield name="achternaam" value="{postData.achternaam}" />
 									</td>
 								</tr>
 								<tr>
@@ -56,13 +58,14 @@
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="bedrijfsnaam" value="" />
+										<f:form.textfield name="bedrijfsnaam" value="{postData.bedrijfsnaam}" />
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label for="rechtsvorm">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:company_legal" />
+											<span class="required">**</span>
 										</label>
 									</td>
 									<td>
@@ -73,20 +76,22 @@
 									<td>
 										<label for="straat">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:street" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="straat" value="" />
+										<f:form.textfield name="straat" value="{postData.straat}" />
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label for="huisnr">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:no" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="huisnr" value="" />
+										<f:form.textfield name="huisnr" value="{postData.huisnr}" />
 									</td>
 								</tr>
 								<tr>
@@ -96,27 +101,29 @@
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="huisnrtoev" value="" />
+										<f:form.textfield name="huisnrtoev" value="{postData.huisnrtoev}" />
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label for="postcode">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:zipcode" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="postcode" value="" />
+										<f:form.textfield name="postcode" value="{postData.postcode}" />
 									</td>
 								</tr>
 								<tr>
 									<td>
 										<label for="plaats">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:city" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="plaats" value="" />
+										<f:form.textfield name="plaats" value="{postData.stad}" />
 									</td>
 								</tr>
 								<tr>
@@ -133,10 +140,11 @@
 									<td>
 										<label for="email">
 											<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:email" />
+											<span class="required">*</span>
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="email" value="" />
+										<f:form.textfield name="email" value="{postData.email}" />
 									</td>
 								</tr>
 								<tr>
@@ -146,12 +154,22 @@
 										</label>
 									</td>
 									<td>
-										<f:form.textfield name="tel" value="" />
+										<f:form.textfield name="tel" value="{postData.tel}" />
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
 										<f:form.submit name="submit" value="{f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:submit')}" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<sub>* {f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:required')}</sub>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<sup>** {f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:required_if_company')}</sup>
 									</td>
 								</tr>
 							</table>
