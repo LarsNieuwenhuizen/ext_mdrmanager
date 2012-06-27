@@ -349,6 +349,9 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 			for($i = 1; $i <= $mdr->Values['errcount']; $i++) {
 				$this->flashMessageContainer->add($mdr->Values[ "errnotxt".$i ] . ' code: ' . $mdr->Values[ "errno".$i ]);
 			}
+			return 'true';
+		} else {
+			return 'false';
 		}
 	}
 
@@ -373,11 +376,10 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Extbase_MVC_Control
 		}
 		$mdr->DoTransaction();
 		$errors = $this->_checkForErrors($mdr);
-		if(empty($errors)) {
+		if($errors == 'false') {
 			$this->flashMessageContainer->add('contact toegevoegd');
 			$this->redirect('index');
 		} else {
-			$this->flashMessageContainer->add($errors);
 			$this->redirect('newContactForm');
 		}
 	}
