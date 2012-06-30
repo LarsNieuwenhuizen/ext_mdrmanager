@@ -1,5 +1,4 @@
 <?php
-
 /***************************************************************
  *  Copyright notice
  *
@@ -25,37 +24,39 @@
  ***************************************************************/
 
 /**
- * Domains Controller
+ * Abstract Controller
  *
  * @package mdrmanager
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controller_AbstractController {
+class Tx_Mdrmanager_Controller_AbstractController extends Tx_Extbase_MVC_Controller_ActionController {
 	/**
-	 * List all domains
-	 *
-	 * @return array domains
+	 * @var object mdr API
 	 */
-	public function listAction() {
-		$this->mdr->addParam('command', 'domain_list');
-		$this->mdr->addParam('sort', 'registrant');
-		$this->mdr->addParam('order', '1');
-		$this->mdr->doTransaction();
+	protected $mdr;
 
-		$this->_checkForErrors($this->mdr);
-		$domains = array();
+	/**
+	 * Initialize mdr API
+	 */
+	public function __construct() {
+		$this->mdr = t3lib_div::makeInstance('Tx_Mdrmanager_3rdParty_mdrApi');
+	}
 
-		for($i = 1; $i < $this->mdr->Values['domeincount']; $i++) {
-			$domains[$i]['domain'] = $this->mdr->Values["domein[$i]"];
-			$domains[$i]['registrant'] = $this->mdr->Values["registrant[$i]"];
-			$domains[$i]['admin'] = $this->mdr->Values["admin[$i]"];
-			$domains[$i]['tech'] = $this->mdr->Values["tech[$i]"];
-			$domains[$i]['expiration_date'] = $this->mdr->Values["verloopdatum[$i]"];
-			$domains[$i]['status'] = $this->mdr->Values["status[$i]"];
+	/**
+	 * If there are errors with the transaction set errors to view
+	 *
+	 * @param Tx_Mdrmanager_3rdParty_mdrApi $mdr
+	 * @return boolean
+	 */
+	protected function _checkForErrors(Tx_Mdrmanager_3rdParty_mdrApi $mdr) {
+		if($mdr->Values['errcount'] > 0) {
+			for($i = 1; $i <= $mdr->Values['errcount']; $i++) {
+				$this->flashMessageContainer->add($mdr->Values[ "errnotxt".$i ] . ' code: ' . $mdr->Values[ "errno".$i ]);
+			}
+			return 'true';
+		} else {
+			return 'false';
 		}
-		$this->view->assign('domains', $domains);
-
-		$this->view->assign('domain_list', $this->mdr->Values);
 	}
 }
 
