@@ -2,6 +2,14 @@
 	text-align: left !important;
 }
 
+.red {
+	color: #FF0000 !important;
+}
+
+.green {
+	color: #90ee90;
+}
+
 .step {
 	margin-top: 4px;
 	margin-right: 10px;

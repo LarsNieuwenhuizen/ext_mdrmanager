@@ -6,6 +6,13 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="domain_list">Domain list</label>
+			<label index="add_domain">Add domain</label>
+			<label index="domain.registrant">Registrant</label>
+			<label index="domain.admin">Administration contact</label>
+			<label index="domain.tech">Technical contact</label>
+			<label index="domain.expiration_date">Expiration date</label>
+			<label index="domain.status">Status</label>
 		</languageKey>
 	</data>
 </T3locallang>
