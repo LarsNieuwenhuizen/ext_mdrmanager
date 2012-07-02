@@ -17,7 +17,7 @@ if (TYPO3_MODE === 'BE') {
 		'domains',	// Submodule key
 		'',						// Position
 		array(
-			'Domains' => 'list',
+			'Domains' => 'list, details',
 		),
 		array(
 			'access' => 'user,group',

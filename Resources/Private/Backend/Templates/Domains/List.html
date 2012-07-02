@@ -4,17 +4,28 @@
 	<div class="typo3-inner-docbody">
 		<table class="typo3-dblist" cellpadding="0" cellspacing="0">
 			<tbody>
+				<tr class="c-table-row-spacer"></tr>
 				<tr class="t3-row-header">
 					<td colspan="2">
-						<f:translate key="domain_list" />
+						<f:translate key="{functionName}" />
+					</td>
+				</tr>
+				<tr class="c-headLine">
+					<td nowrap="nowrap" width="40" class="col-icon">
+						<f:link.action action="new">
+							<span class="t3-icon t3-icon-actions t3-icon-actions-page t3-icon-page-new"></span>
+						</f:link.action>
+					</td>
+					<td nowrap="nowrap" class="col-title">
+						{f:translate(key: 'domain_name')}
 					</td>
 				</tr>
 				<f:for each="{domains}" as="domain">
 					<tr class="db_list_normal">
-						<td width="30">
+						<td width="40">
 							<span class="exp-coll"></span>
 						</td>
-						<td nowrap="nowrap">
+						<td nowrap="nowrap" class="col-title">
 							{domain.domain}
 							<div class="more-data">
 								{f:translate(key: 'domain.registrant')}: {domain.registrant}<br />
@@ -22,6 +33,10 @@
 								{f:translate(key: 'domain.tech')}: {domain.tech}<br />
 								{f:translate(key: 'domain.expiration_date')}: {domain.expiration_date}<br />
 								{f:translate(key: 'domain.status')}: {domain.status}
+								<f:link.action action="details" arguments="{domain: domain}">
+									<span class="detail_link">{f:translate(key: 'domain.details')}</span>
+									{tld}
+								</f:link.action>
 							</div>
 						</td>
 					</tr>

@@ -37,6 +37,7 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 	 * @return array domains
 	 */
 	public function listAction() {
+		$this->view->assign('functionName', 'domain.list');
 		$this->mdr->addParam('command', 'domain_list');
 		$this->mdr->addParam('sort', 'registrant');
 		$this->mdr->addParam('order', '1');
@@ -56,6 +57,47 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 		$this->view->assign('domains', $domains);
 
 		$this->view->assign('domain_list', $this->mdr->Values);
+	}
+
+	/**
+	 * Get full details of a domain
+	 *
+	 * @param string $domain
+	 * @return object Tx_Mdrmanager_3rdParty_mdrApi
+	 */
+	protected function _getDomainDetails($domain) {
+		$domainArray = explode('.', $domain);
+		if(end($domainArray) === 'uk') {
+			$domainTld = 'co.uk';
+		} else {
+			$domainTld = end($domainArray);
+		}
+		$domainWithoutTld = $domainArray[0];
+		$this->mdr->addParam('command', 'domain_get_details');
+		$this->mdr->addParam('domein', $domainWithoutTld);
+		$this->mdr->addParam('tld', $domainTld);
+		$this->mdr->doTransaction();
+		$this->_checkForErrors($this->mdr);
+
+		return $this->mdr->Values;
+	}
+
+	/**
+	 * View the full details of a domain
+	 */
+	public function detailsAction() {
+		$this->view->assign('functionName', 'domain.details');
+		if($this->request->hasArgument('domain')) {
+			$domain = $this->request->getArgument('domain');
+			$this->view->assign('domainName', $domain['domain']);
+			$domain = $this->_getDomainDetails($domain['domain']);
+			$domain['registrant_land'] = $this->countries[$domain['registrant_land']];
+			$domain['admin_land'] = $this->countries[$domain['admin_land']];
+			$domain['tech_land'] = $this->countries[$domain['tech_land']];
+			foreach($domain as $k => $v) {
+				$this->view->assign($k, $v);
+			}
+		}
 	}
 }
 

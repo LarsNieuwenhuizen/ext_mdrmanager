@@ -84,6 +84,8 @@
 	display: block;
 	background-image: url('../Icons/exp-coll.gif') !important;
 	background-position: top;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .exp-coll:hover {
@@ -112,4 +114,21 @@ table.new-contact td {
 }
 
 table.typo3-TCEforms div.typo3-dyntabmenu-divs {
+}
+
+.detail_link {
+	display: block;
+	margin: 10px 0 0 0;
+	padding: 5px 0 0 0;
+	border-top: 1px solid #808080;
+	width: 95%;
+	font-weight: bold;
+}
+
+table.typo3-dblist tr td.col-title {
+	width: auto;
+}
+
+table.domain-details {
+	width: 70% !important;
 }

@@ -1,0 +1,157 @@
+<f:layout name="domains" />
+
+<f:section name="content">
+	<f:flashmessages class="errors" />
+	<div class="typo3-inner-docbody">
+		<table class="typo3-dblist domain-details">
+			<tr>
+				<td colspan="4">
+					<h1>{domainName}</h1>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<h2>{f:translate(key: 'contact.info')}</h2>
+				</td>
+			</tr>
+			<tr>
+				<th></th>
+				<th>{f:translate(key: 'contact.registrant')}</th>
+				<th>{f:translate(key: 'contact.admin')}</th>
+				<th>{f:translate(key: 'contact.registrant')}</th>
+			</tr>
+			<tr>
+				<td>Id</td>
+				<td>{registrant_id}</td>
+				<td>{admin_id}</td>
+				<td>{tech_id}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'company')}</td>
+				<td>{registrant_bedrijfsnaam}</td>
+				<td>{admin_bedrijfsnaam}</td>
+				<td>{tech_bedrijfsnaam}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'legal')}</td>
+				<td>{registrant_rechtsvorm}</td>
+				<td>{admin_rechtsvorm}</td>
+				<td>{tech_rechtsvorm}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'registrationNo')}</td>
+				<td>{registrant_regnummer}</td>
+				<td>{admin_regnummer}</td>
+				<td>{tech_regnummer}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'firstname')}</td>
+				<td>{registrant_voorletter}</td>
+				<td>{admin_voorletter}</td>
+				<td>{tech_voorletter}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'insertion')}</td>
+				<td>{registrant_tussenvoegsel}</td>
+				<td>{admin_tussenvoegsel}</td>
+				<td>{tech_tussenvoegsel}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'lastname')}</td>
+				<td>{registrant_achternaam}</td>
+				<td>{admin_achternaam}</td>
+				<td>{tech_achternaam}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'street')}</td>
+				<td>{registrant_straat}</td>
+				<td>{admin_straat}</td>
+				<td>{tech_straat}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'no')}</td>
+				<td>{registrant_huisnr}</td>
+				<td>{admin_huisnr}</td>
+				<td>{tech_huisnr}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'no-addition')}</td>
+				<td>{registrant_huisnrtoev}</td>
+				<td>{admin_huisnrtoev}</td>
+				<td>{tech_huisnrtoev}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'zipcode')}</td>
+				<td>{registrant_postcode}</td>
+				<td>{admin_postcode}</td>
+				<td>{tech_postcode}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'city')}</td>
+				<td>{registrant_plaats}</td>
+				<td>{admin_plaats}</td>
+				<td>{tech_plaats}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'country')}</td>
+				<td>{registrant_land}</td>
+				<td>{admin_land}</td>
+				<td>{tech_land}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'email')}</td>
+				<td>{registrant_email}</td>
+				<td>{admin_email}</td>
+				<td>{tech_email}</td>
+			</tr>
+			<tr>
+				<td>{f:translate(key: 'phone')}</td>
+				<td>{registrant_tel}</td>
+				<td>{admin_tel}</td>
+				<td>{tech_tel}</td>
+			</tr>
+			<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2"><h2>Nameservers</h2></td>
+				<td colspan="2"><h2>Information</h2></td>
+			</tr>
+			<tr>
+				<td colspan="2">{f:translate(key: 'nameserver_id')}: {ns_id}</td>
+				<td colspan="2">{f:translate(key: 'autorenew')}: {f:if(condition: '{autorenew} == 1', then: 'true', else: 'false')}</td>
+			</tr>
+			<tr>
+				<td colspan="2">Nameserver 1: {ns1}</td>
+				<td colspan="2">{f:translate(key: 'lock')}: {lock}</td>
+			</tr>
+			<tr>
+				<td colspan="2">Nameserver 2: {ns2}</td>
+				<td colspan="2">{f:translate(key: 'expiration_date')}: <f:format.date format="d-m-Y">{verloopdatum}</f:format.date></td>
+			</tr>
+			<tr>
+				<td colspan="2">Nameserver 3: {ns3}</td>
+				<td colspan="2">{f:translate(key: 'authentication_key')}: {authkey}</td>
+			</tr>
+			<tr>
+				<td colspan="2">Nameserver 4: {ns4}</td>
+				<td colspan="2">{f:translate(key: 'status')}: {status}</td>
+			</tr>
+			<tr>
+				<td colspan="4">Nameserver 5: {ns5}</td>
+			</tr>
+			<tr>
+				<td colspan="4">Nameserver 6: {ns6}</td>
+			</tr>
+			<tr>
+				<td colspan="4">Nameserver 7: {ns7}</td>
+			</tr>
+			<tr>
+				<td colspan="4">{f:translate(key: 'mdr_dns')} : {f:if(condition: '{gebruik_dns} == 1', then: 'true', else: 'false')}</td>
+			</tr>
+			<tr>
+				<td colspan="4">{f:translate(key: 'dns_template')} : {dns_template}</td>
+			</tr>
+		</table>
+	</div>
+</f:section>

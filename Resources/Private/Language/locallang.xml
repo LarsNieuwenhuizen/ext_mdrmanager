@@ -6,13 +6,43 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="domain_list">Domain list</label>
+			<label index="domain.list">Domain list</label>
+			<label index="domain_name">Domain name</label>
 			<label index="add_domain">Add domain</label>
 			<label index="domain.registrant">Registrant</label>
 			<label index="domain.admin">Administration contact</label>
 			<label index="domain.tech">Technical contact</label>
 			<label index="domain.expiration_date">Expiration date</label>
 			<label index="domain.status">Status</label>
+			<label index="domain.details">View details</label>
+
+			<label index="contact.info">Contact information</label>
+			<label index="contact.registrant">Registrant</label>
+			<label index="contact.admin">Administrator</label>
+			<label index="contact.tech">Technical</label>
+			<label index="company">Company</label>
+			<label index="legal">Legal</label>
+			<label index="legal">Legal</label>
+			<label index="registrationNo">Registration number</label>
+			<label index="firstname">First name</label>
+			<label index="insertion">Insertion</label>
+			<label index="lastname">Last name</label>
+			<label index="street">Street</label>
+			<label index="no">No</label>
+			<label index="no-addition">no-addition</label>
+			<label index="zipcode">Zipcode</label>
+			<label index="city">City</label>
+			<label index="country">Country</label>
+			<label index="email">Email</label>
+			<label index="phone">Phone</label>
+			<label index="nameserver_id">Nameserver Id</label>
+			<label index="mdr_dns">MDR DNS</label>
+			<label index="dns_template">DNS template</label>
+			<label index="autorenew">Auto renewal</label>
+			<label index="lock">Domain lock</label>
+			<label index="expiration_date">Expiration date</label>
+			<label index="authentication_key">Authentication key</label>
+			<label index="status">Status</label>
 		</languageKey>
 	</data>
 </T3locallang>
