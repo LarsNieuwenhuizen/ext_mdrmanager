@@ -90,6 +90,7 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 		if($this->request->hasArgument('domain')) {
 			$domain = $this->request->getArgument('domain');
 			$this->view->assign('domainName', $domain['domain']);
+			$this->view->assign('domain', $domain);
 			$domain = $this->_getDomainDetails($domain['domain']);
 			$domain['registrant_land'] = $this->countries[$domain['registrant_land']];
 			$domain['admin_land'] = $this->countries[$domain['admin_land']];
@@ -98,6 +99,31 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 				$this->view->assign($k, $v);
 			}
 		}
+	}
+
+	/**
+	 * Set the autorenew on or off
+	 *
+	 * @return void
+	 */
+	public function setAutoRenewAction() {
+		$domain = $this->request->getArgument('domain');
+		$domainArray = explode('.', $domain['domain']);
+		if(end($domainArray) === 'uk') {
+			$domainTld = 'co.uk';
+		} else {
+			$domainTld = end($domainArray);
+		}
+
+		$this->mdr->addParam('command', 'domain_set_autorenew');
+		$this->mdr->addParam('domein', $domainArray[0]);
+		$this->mdr->addParam('tld', $domainTld);
+		$this->mdr->addParam('autorenew', $this->request->getArgument('autorenew'));
+
+		$this->mdr->doTransaction();
+
+		$this->_checkForErrors($this->mdr);
+		$this->forward('details', 'Domains', 'mdrmanager', array('domain' => $this->request->getArgument('domain')));
 	}
 }
 

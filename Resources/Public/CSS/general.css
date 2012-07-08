@@ -132,3 +132,12 @@ table.typo3-dblist tr td.col-title {
 table.domain-details {
 	width: 70% !important;
 }
+
+.autorenew-label {
+	float: left;
+	padding-top: 3px;
+}
+
+.autorenew-form {
+	float: left;
+}

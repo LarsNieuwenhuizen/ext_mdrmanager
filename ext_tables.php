@@ -17,7 +17,7 @@ if (TYPO3_MODE === 'BE') {
 		'domains',	// Submodule key
 		'',						// Position
 		array(
-			'Domains' => 'list, details',
+			'Domains' => 'list, details, setAutoRenew',
 		),
 		array(
 			'access' => 'user,group',

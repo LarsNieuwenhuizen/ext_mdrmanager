@@ -43,6 +43,7 @@
 			<label index="expiration_date">Expiration date</label>
 			<label index="authentication_key">Authentication key</label>
 			<label index="status">Status</label>
+			<label index="form.submit">Submit</label>
 		</languageKey>
 	</data>
 </T3locallang>
