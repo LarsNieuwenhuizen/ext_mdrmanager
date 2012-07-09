@@ -87,6 +87,17 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 	 */
 	public function detailsAction() {
 		$this->view->assign('functionName', 'domain.details');
+
+		$contactList = t3lib_div::makeInstance('Tx_Mdrmanager_Controller_ContactsController');
+		$contactList->getContactById();
+		$contacts = $contactList->getAllContacts();
+		$contactArray = array();
+		foreach($contacts as $k => $v) {
+			$contactArray[$v['id']] = $v['voorletter'] . ' ' . (!empty($v['tussenvoegsel']) ? ' ' . $v['tussenvoegsel'] . ' ' : '') . $v['achternaam'];
+		}
+		array_unshift($contactArray, '-------------------');
+		$this->view->assign('contacts', $contactArray);
+
 		if($this->request->hasArgument('domain')) {
 			$domain = $this->request->getArgument('domain');
 			$this->view->assign('domainName', $domain['domain']);
@@ -121,6 +132,63 @@ class Tx_Mdrmanager_Controller_DomainsController extends Tx_Mdrmanager_Controlle
 		$this->mdr->addParam('autorenew', $this->request->getArgument('autorenew'));
 
 		$this->mdr->doTransaction();
+
+		$this->_checkForErrors($this->mdr);
+		$this->forward('details', 'Domains', 'mdrmanager', array('domain' => $this->request->getArgument('domain')));
+	}
+
+	/**
+	 * Modify a contact tech or admin
+	 */
+	public function modifyDomainContactAction() {
+		$contacts = t3lib_div::makeInstance('Tx_Mdrmanager_Controller_ContactsController');
+			// Get the contact by the id
+		$contact = $contacts->getContactById($this->request->getArgument('newContact'));
+		$contactType = $this->request->getArgument('contactType');
+
+		$domain = $this->request->getArgument('domain');
+		$domainArray = explode('.', $domain['domain']);
+		if(end($domainArray) === 'uk') {
+			$domainTld = 'co.uk';
+		} else {
+			$domainTld = end($domainArray);
+		}
+
+		$this->mdr->addParam('command', 'domain_modify_contacts');
+		$this->mdr->addParam( 'domein', $domainArray[0]);
+		$this->mdr->addParam( 'tld', $domainTld);
+
+		($contactType == 'admin') ? $otherContactType = 'tech' : $otherContactType = 'admin';
+
+			// Set admin/tech, id
+		$this->mdr->addParam($contactType . '_id', $this->request->getArgument('newContact'));
+		$this->mdr->addParam($contactType . '_bedrijfsnaam', $contact['bedrijfsnaam']);
+		$this->mdr->addParam($contactType . '_voorletter', $contact['voorletter']);
+		$this->mdr->addParam($contactType . '_tussenvoegsel', $contact['tussenvoegsel']);
+		$this->mdr->addParam($contactType . '_achternaam', $contact['achternaam']);
+		$this->mdr->addParam($contactType . '_straat', $contact['straat']);
+		$this->mdr->addParam($contactType . '_huisnr', $contact['huisnr']);
+		$this->mdr->addParam($contactType . '_postcode', $contact['postcode']);
+		$this->mdr->addParam($contactType . '_plaats', $contact['plaats']);
+		$this->mdr->addParam($contactType . '_land', $contact['land']);
+		$this->mdr->addParam($contactType . '_tel', $contact['tel']);
+		$this->mdr->addParam($contactType . '_email', $contact['email']);
+
+			// Set other type data
+		$this->mdr->addParam($otherContactType . '_id', $this->request->getArgument('other_id'));
+		$this->mdr->addParam($otherContactType . '_bedrijfsnaam', $this->request->getArgument('other_company'));
+		$this->mdr->addParam($otherContactType . '_voorletter', $this->request->getArgument('other_firstname'));
+		$this->mdr->addParam($otherContactType . '_tussenvoegsel', $this->request->getArgument('other_insertion'));
+		$this->mdr->addParam($otherContactType . '_achternaam', $this->request->getArgument('other_lastname'));
+		$this->mdr->addParam($otherContactType . '_straat', $this->request->getArgument('other_street'));
+		$this->mdr->addParam($otherContactType . '_huisnr', $this->request->getArgument('other_houseno'));
+		$this->mdr->addParam($otherContactType . '_postcode', $this->request->getArgument('other_zipcode'));
+		$this->mdr->addParam($otherContactType . '_plaats', $this->request->getArgument('other_city'));
+		$this->mdr->addParam($otherContactType . '_land', $this->request->getArgument('other_country'));
+		$this->mdr->addParam($otherContactType . '_tel', $this->request->getArgument('other_email'));
+		$this->mdr->addParam($otherContactType . '_email', $this->request->getArgument('other_tel'));
+
+		$this->mdr->DoTransaction();
 
 		$this->_checkForErrors($this->mdr);
 		$this->forward('details', 'Domains', 'mdrmanager', array('domain' => $this->request->getArgument('domain')));

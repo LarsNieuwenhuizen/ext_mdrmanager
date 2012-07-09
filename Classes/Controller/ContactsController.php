@@ -39,10 +39,22 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 	 */
 	public function indexAction() {
 		$this->view->assign('step', 'contact_list');
+
+		$contacts = $this->getAllContacts();
+		$this->view->assign('contacts', $contacts);
+
+		$this->view->assign('legalForms', $this->legalForms);
+		$this->view->assign('countries', $this->countries);
+	}
+
+	/**
+	 * Return contact array
+	 *
+	 * @return array $contacts
+	 */
+	public function getAllContacts() {
 		$this->mdr->AddParam('command', 'contact_list');
 		$this->mdr->doTransaction();
-
-		$this->_checkForErrors($this->mdr);
 
 		$contacts = array();
 		for($i=0; $i < $this->mdr->Values["contactcount"]; $i++){
@@ -60,10 +72,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 			$contacts[$i]['email'] = $this->mdr->Values["contact_email[$i]"];
 			$contacts[$i]['tel'] = $this->mdr->Values["contact_tel[$i]"];
 		}
-		$this->view->assign('contacts', $contacts);
-
-		$this->view->assign('legalForms', $this->legalForms);
-		$this->view->assign('countries', $this->countries);
+		return $contacts;
 	}
 
 	/**
@@ -94,6 +103,19 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 		} else {
 			$this->forward('newContactForm');
 		}
+	}
+
+	/**
+	 * Return a contact by ID
+	 *
+	 * @param string $id
+	 * @return array $contact
+	 */
+	public function getContactById($id = NULL) {
+		$contacts = $this->getAllContacts();
+		$key = $this->findParentArrayKey($contacts, $id);
+
+		return $contacts[$key];
 	}
 }
 

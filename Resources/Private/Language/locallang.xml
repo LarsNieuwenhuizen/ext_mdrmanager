@@ -44,6 +44,7 @@
 			<label index="authentication_key">Authentication key</label>
 			<label index="status">Status</label>
 			<label index="form.submit">Submit</label>
+			<label index="change_contact">Change contact</label>
 		</languageKey>
 	</data>
 </T3locallang>

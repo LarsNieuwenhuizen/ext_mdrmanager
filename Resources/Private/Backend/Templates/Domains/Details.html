@@ -19,7 +19,7 @@
 					<th></th>
 					<th>{f:translate(key: 'contact.registrant')}</th>
 					<th>{f:translate(key: 'contact.admin')}</th>
-					<th>{f:translate(key: 'contact.registrant')}</th>
+					<th>{f:translate(key: 'contact.tech')}</th>
 				</tr>
 				<tr>
 					<td>Id</td>
@@ -112,7 +112,62 @@
 					<td>{tech_tel}</td>
 				</tr>
 				<tr>
-					<td colspan="4">&nbsp;</td>
+					<td colspan="4"><div style="width: 100%; border-top: 1px solid #999; margin-top: 4px;"></div></td>
+				</tr>
+				<tr>
+					<td>{f:translate(key: 'change_contact')}</td>
+					<td>
+					</td>
+					<td>
+						<f:form action="modifyDomainContact" arguments="{domain: domain}">
+							<f:form.hidden value="admin" name="contactType" />
+
+								<!-- Values needed because the API requires both contacts to updated somehow... -->
+							<f:form.hidden name="other_id" value="{tech_id}" />
+							<f:form.hidden name="other_company" value="{tech_bedrijfsnaam}" />
+							<f:form.hidden name="other_legal" value="{tech_rechtsvorm}" />
+							<f:form.hidden name="other_regno" value="{tech_regnummer}" />
+							<f:form.hidden name="other_firstname" value="{tech_voorletter}" />
+							<f:form.hidden name="other_insertion" value="{tech_tussenvoegsel}" />
+							<f:form.hidden name="other_lastname" value="{tech_achternaam}" />
+							<f:form.hidden name="other_street" value="{tech_straat}" />
+							<f:form.hidden name="other_houseno" value="{tech_huisnr}" />
+							<f:form.hidden name="other_houseno_addition" value="{tech_huisnrtoev}" />
+							<f:form.hidden name="other_zipcode" value="{tech_postcode}" />
+							<f:form.hidden name="other_city" value="{tech_plaats}" />
+							<f:form.hidden name="other_country" value="{tech_land}" />
+							<f:form.hidden name="other_email" value="{tech_email}" />
+							<f:form.hidden name="other_tel" value="{tech_tel}" />
+
+							<f:form.select name="newContact" options="{contacts}" />
+							<f:form.submit value="{f:translate(key: 'form.submit')}" />
+						</f:form>
+					</td>
+					<td>
+						<f:form action="modifyDomainContact" arguments="{domain: domain}">
+							<f:form.hidden value="tech" name="contactType" />
+
+								<!-- Values needed because the API requires both contacts to updated somehow... -->
+							<f:form.hidden name="other_id" value="{admin_id}" />
+							<f:form.hidden name="other_company" value="{admin_bedrijfsnaam}" />
+							<f:form.hidden name="other_legal" value="{admin_rechtsvorm}" />
+							<f:form.hidden name="other_regno" value="{admin_regnummer}" />
+							<f:form.hidden name="other_firstname" value="{admin_voorletter}" />
+							<f:form.hidden name="other_insertion" value="{admin_tussenvoegsel}" />
+							<f:form.hidden name="other_lastname" value="{admin_achternaam}" />
+							<f:form.hidden name="other_street" value="{admin_straat}" />
+							<f:form.hidden name="other_houseno" value="{admin_huisnr}" />
+							<f:form.hidden name="other_houseno_addition" value="{admin_huisnrtoev}" />
+							<f:form.hidden name="other_zipcode" value="{admin_postcode}" />
+							<f:form.hidden name="other_city" value="{admin_plaats}" />
+							<f:form.hidden name="other_country" value="{admin_land}" />
+							<f:form.hidden name="other_email" value="{admin_email}" />
+							<f:form.hidden name="other_tel" value="{admin_tel}" />
+
+							<f:form.select name="newContact" options="{contacts}" />
+							<f:form.submit value="{f:translate(key: 'form.submit')}" />
+						</f:form>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2"><h2>Nameservers</h2></td>

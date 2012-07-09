@@ -330,6 +330,19 @@ class Tx_Mdrmanager_Controller_AbstractController extends Tx_Extbase_MVC_Control
 			return 'false';
 		}
 	}
+
+	/**
+	 * Return the parent key
+	 *
+	 * @param $array
+	 * @param $search
+	 * @return int|string
+	 */
+	protected function findParentArrayKey($array, $search) {
+		foreach($array as $key => $value) {
+			if(in_array($search, $value)) return $key;
+		}
+	}
 }
 
 ?>
