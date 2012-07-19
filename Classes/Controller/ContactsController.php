@@ -99,9 +99,9 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 		$errors = $this->_checkForErrors($this->mdr);
 		if($errors == 'false') {
 			$this->flashMessageContainer->add('contact toegevoegd');
-			$this->redirect('index');
+			$this->redirect('list');
 		} else {
-			$this->forward('newContactForm');
+			$this->forward('new');
 		}
 	}
 
