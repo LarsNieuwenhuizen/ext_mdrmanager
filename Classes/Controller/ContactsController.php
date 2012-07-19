@@ -37,7 +37,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 	 *
 	 * @return void
 	 */
-	public function indexAction() {
+	public function listAction() {
 		$this->view->assign('step', 'contact_list');
 
 		$contacts = $this->getAllContacts();
@@ -78,7 +78,7 @@ class Tx_Mdrmanager_Controller_ContactsController extends Tx_Mdrmanager_Controll
 	/**
 	 * Show a form to add a new contact
 	 */
-	public function newContactFormAction() {
+	public function newAction() {
 		$this->view->assign('step', 'add_contact');
 		$this->view->assign('countries', $this->countries);
 		$this->view->assign('postData', $this->request->getArguments());

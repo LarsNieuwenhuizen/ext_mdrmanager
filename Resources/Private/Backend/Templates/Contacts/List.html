@@ -1,0 +1,48 @@
+<f:layout name="Contacts" />
+<f:section name="content">
+	<f:flashmessages class="errors" />
+	<div class="typo3-inner-docbody">
+		<table class="typo3-dblist" cellpadding="0" cellspacing="0">
+			<tbody>
+			<tr class="t3-row-header">
+				<td colspan="2">
+					<f:translate key="LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:list" />
+				</td>
+			</tr>
+			<tr class="c-headLine">
+				<td nowrap="nowrap" width="40" class="col-icon">
+					<f:link.action action="new">
+						<span class="t3-icon t3-icon-actions t3-icon-actions-page t3-icon-page-new"></span>
+					</f:link.action>
+				</td>
+				<td nowrap="nowrap" class="col-title">
+					{f:translate(key: 'contacts')}
+				</td>
+			</tr>
+			<f:for each="{contacts}" as="contact">
+				<tr class="db_list_normal">
+					<td width="30">
+						<span class="exp-coll"></span>
+					</td>
+					<td nowrap="nowrap">
+						{contact.voorletter} {contact.tussenvoegsel} {contact.achternaam} <f:if condition="{contact.bedrijfsnaam}"> | {contact.bedrijfsnaam}</f:if>
+						<div class="more-data">
+							{contact.straat} {contact.huisnr} {contact.huisnrtoev}<br />
+							{contact.postcode} {contact.plaats} {contact.land}<br /><br />
+							{contact.email}<br />
+							{contact.tel}<br />
+						</div>
+					</td>
+				</tr>
+			</f:for>
+			<tr>
+				<td colspan="2">
+					<f:link.action action="newContactForm">
+						{f:translate(key: 'LLL:EXT:mdrmanager/Resources/Private/Language/locallang_contacts.xml:add_contact')}
+					</f:link.action>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</f:section>

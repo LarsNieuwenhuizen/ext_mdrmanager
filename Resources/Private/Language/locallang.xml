@@ -16,6 +16,7 @@
 			<label index="domain.status">Status</label>
 			<label index="domain.details">View details</label>
 
+			<label index="contacts">Contacts</label>
 			<label index="contact.info">Contact information</label>
 			<label index="contact.registrant">Registrant</label>
 			<label index="contact.admin">Administrator</label>
